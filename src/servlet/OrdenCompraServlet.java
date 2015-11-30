@@ -71,6 +71,7 @@ public class OrdenCompraServlet extends HttpServlet {
 				solicitudesPendientes.add(solicitudCompra);
 			}
 			Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes);
+			response.getWriter().print("<p> Se generaron las solicitudes de compra </p>");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}  catch (CommunicationException e) {
@@ -78,6 +79,8 @@ public class OrdenCompraServlet extends HttpServlet {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

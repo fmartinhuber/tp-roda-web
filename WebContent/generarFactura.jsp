@@ -32,8 +32,12 @@
 		</h1>
 		<table>
 			<tr>
-				<td>Cliente:</td>
-				<td><input type="TEXT" name="cliente" value="1">
+				<td>CUIT:</td>
+				<td><input type="TEXT" name="cuit" value="1">
+			</tr>
+			<tr>
+				<td>Razon Social:</td>
+				<td><input type="TEXT" name="razonSocial" value="1">
 			</tr>
 			<tr>
 				<td>Fecha:</td>

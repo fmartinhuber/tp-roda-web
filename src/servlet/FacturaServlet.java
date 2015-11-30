@@ -62,6 +62,7 @@ public class FacturaServlet extends HttpServlet {
 		cliente.setCUIT(request.getParameter("cuit"));
 		cliente.setRazonSocial(request.getParameter("razonSocial"));
 		
+		
 		List <CotizacionDto> listaCotizaciones = new ArrayList<CotizacionDto>();
 		
 		JSONArray jObj;
@@ -71,9 +72,9 @@ public class FacturaServlet extends HttpServlet {
 			for (int i = 0; i < jObj.length(); i++) {
 				JSONObject objeto = jObj.getJSONObject(i);
 				String codigo = objeto.getString("codigo");
-				CotizacionDto item = new CotizacionDto();
-				item.setNumeroCotizacion(Integer.valueOf(codigo));
-				listaCotizaciones.add(item);
+				CotizacionDto cotizacionDto = new CotizacionDto();
+				cotizacionDto.setNumeroCotizacion(Integer.valueOf(codigo));
+				listaCotizaciones.add(cotizacionDto);
 				
 			}
 			
@@ -81,10 +82,8 @@ public class FacturaServlet extends HttpServlet {
 				Delegado.getInstancia().generarFactura(listaCotizaciones, cliente);
 			} catch (CommunicationException | MalformedURLException
 					| NotBoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//AdministracionOV.getInstancia().generarFactura(listaCotizaciones, cliente);
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

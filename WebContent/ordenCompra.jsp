@@ -39,7 +39,9 @@
 			</tr>
 			<tr>
 				<td>Nro Solicitud:</td>
-				<td><input type="TEXT" id="codigo" value="1"></td>
+				<td><input type="TEXT" name="codigo" id="codigo" value="1"></td>
+				<td>Forma Pago:</td>
+				<td><input type="TEXT" id="codigo" name="formaPago" value="efectivo"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><input type="button" value="Agregar" onClick="agregar();"></td>

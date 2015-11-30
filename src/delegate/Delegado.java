@@ -97,9 +97,9 @@ public class Delegado {
 		}
 	}
 	
-	public int crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes){
+	public int crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes, String formaPago){
 		try{
-			return manejoDeDatosOV.crearOrdenCompra(solicitudesPendientes);
+			return manejoDeDatosCC.crearOrdenCompra(solicitudesPendientes, formaPago);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}

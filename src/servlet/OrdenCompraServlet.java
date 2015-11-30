@@ -70,7 +70,8 @@ public class OrdenCompraServlet extends HttpServlet {
 				
 				solicitudesPendientes.add(solicitudCompra);
 			}
-			int ordenCompra = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes);
+			String forma = request.getParameter("formaPago");
+			int ordenCompra = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes,forma);
 			response.getWriter().print("<p> Se generaron las solicitudes de compra: " +ordenCompra+ "</p>");
 		} catch (JSONException e) {
 			e.printStackTrace();

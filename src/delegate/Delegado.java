@@ -46,7 +46,7 @@ public class Delegado {
 	{
 		try {
 			manejoDeDatosOV = (IAdministracionOV) Naming.lookup("//localhost:1099/SistemaRodamientoOV");
-			manejoDeDatosCC = (IAdministracionCC) Naming.lookup("//localhost:1098/SistemaRodamientoCC");
+			manejoDeDatosCC = (IAdministracionCC) Naming.lookup("//localhost:1099/SistemaRodamientoCC");
 			System.out.println("Se conecto correctamente con el servidor");
 			System.out.println("========================================");
 		} catch (RemoteException e) {

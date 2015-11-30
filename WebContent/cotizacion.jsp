@@ -41,18 +41,18 @@ function enviar(){
 		<table>
 			<tr>
 				<td>Razon Social:</td>
-				<td><input type="TEXT" name="razonSocial" value="1"></td>
+				<td><input type="TEXT" name="razonSocial" value="Agro Negocios Lujar"></td>
 			</tr>
 			<tr>
 				<td>CUIT:</td>
-				<td><input type="TEXT" name="cuit" value="1"></td>
+				<td><input type="TEXT" name="cuit" value="30-22222222-3"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">Rodamiento</td>
 			</tr>
 			<tr>
 				<td>Codigo:</td>
-				<td><input type="TEXT" id="codigo" value="1"></td>
+				<td><input type="TEXT" id="codigo" value="20210"></td>
 			</tr>
 			<tr>
 				<td>Cantidad:</td>
@@ -64,11 +64,11 @@ function enviar(){
 			</tr>
 			<tr>
 				<td>Pais:</td>
-				<td><input type="TEXT" id="pais" value="1"></td>
+				<td><input type="TEXT" id="pais" value="Suecia"></td>
 			</tr>
 			<tr>
 				<td>Marca:</td>
-				<td><input type="TEXT" id="marca" value="1"></td>
+				<td><input type="TEXT" id="marca" value="SKF"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><input type="button"

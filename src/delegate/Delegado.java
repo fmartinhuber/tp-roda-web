@@ -11,6 +11,8 @@ import javax.naming.CommunicationException;
 import utils.ItemDto;
 import dto.ClienteDto;
 import dto.CotizacionDto;
+import dto.OrdenCompraDto;
+import dto.ProveedorDto;
 import dto.RodamientoDto;
 import dto.SolicitudCompraDto;
 import interfaces.IAdministracionCC;
@@ -122,6 +124,15 @@ public class Delegado {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public int crearRemito(List <OrdenCompraDto> listaOrdenes, ProveedorDto proveedor){
+		try{
+			return manejoDeDatosCC.crearRemito(listaOrdenes, proveedor);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 }

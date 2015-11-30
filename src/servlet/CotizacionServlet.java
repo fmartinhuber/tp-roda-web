@@ -70,8 +70,6 @@ public class CotizacionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
 	
 
@@ -118,8 +116,6 @@ public class CotizacionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			
-		
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} 

@@ -23,7 +23,6 @@
 		var a = JSON.stringify(listaOrdenCompra);
 		document.getElementById("listaOrdenCompra").value = a;
 		document.getElementById("metodo").value = "generarRemito";
-		alert("Se creo la Orden de compra");
 	}
 </script>
 

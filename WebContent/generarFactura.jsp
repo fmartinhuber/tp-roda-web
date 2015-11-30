@@ -6,12 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	<script type="text/javascript">
+<script type="text/javascript">
+
+	var listItems = [];
+
 	function agregar(){
 		listItems.push({
-			"codigo": document.getElementById('codigo').value,
-			"cantidad": document.getElementById('cantidad').value
+			"codigo": document.getElementById('codigo').value
 		});
 		alert("Se agrego un elemento");
 	}
@@ -20,10 +21,9 @@
 		var a = JSON.stringify(listItems);
 		document.getElementById("listaCotizacion").value = a;
 		document.getElementById("metodo").value = "crearFactura";
-		alert("Se creo la cotizacion");
 	}
 </script>
-
+<body>
 	<form action="FacturaServlet" method="POST">
 		<input type="hidden" name="listaCotizacion" id="listaCotizacion" value="">
 		<input type="hidden" name="metodo" id="metodo" value="">
@@ -33,26 +33,21 @@
 		<table>
 			<tr>
 				<td>CUIT:</td>
-				<td><input type="TEXT" name="cuit" value="1">
+				<td><input type="TEXT" name="cuit" value="30-22222222-3">
 			</tr>
 			<tr>
 				<td>Razon Social:</td>
-				<td><input type="TEXT" name="razonSocial" value="1">
-			</tr>
-			<tr>
-				<td>Fecha:</td>
-				<td><input type="TEXT" name="fecha" value="01/01/2015">
+				<td><input type="TEXT" name="razonSocial" value="Maquinaria Industrial SA">
 			</tr>
 			<tr>
 				<td colspan="2">Factura</td>
 			</tr>
 			<tr>
 				<td>Codigo:</td>
-				<td><input type="TEXT" id="codigo" value="1"></td>
+				<td><input type="TEXT" id="codigo" value="2"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><input type="button"
-					value="Agregar" onClick="agregar();"></td>
+				<td colspan="2" align="right"><input type="button" value="Agregar" onClick="agregar();"></td>
 			</tr>
 			<tr>
 				<td>Sub total:</td>

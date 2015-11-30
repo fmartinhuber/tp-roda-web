@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +29,7 @@ import utils.ItemDto;
 import delegate.Delegado;
 import dto.ClienteDto;
 import dto.CotizacionDto;
+import dto.ItemCotizacionDto;
 import dto.RodamientoDto;
 
 /**
@@ -126,17 +128,30 @@ public class CotizacionServlet extends HttpServlet {
 	
 	protected void buscarCotizaciones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		List <CotizacionDto> cotizaciones = Delegado.getInstancia().obtenerCotizaciones();
-//		
-//		String [] arrayCotizaciones = new String [cotizaciones.size()];
-//		
-//		for (int i = 0; i < arrayCotizaciones.length; i++) {
-//			arrayCotizaciones[i] = String.valueOf(cotizaciones.get(i).getIdCotizacion());
-//		}
-//		request.setAttribute("arrayCotizaciones", arrayCotizaciones);
-//		
-//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aprobarCotizacion.jsp");
-//		dispatcher.forward(request,response);
+		List<CotizacionDto> cotizaciones;
+		try {
+			cotizaciones = Delegado.getInstancia().obtenerCotizaciones();
+			
+			for (int i = 0; i < cotizaciones.size(); i++) {
+				CotizacionDto cotizacionDto = cotizaciones.get(i);
+				response.getWriter().print("<table>");
+				response.getWriter().print("<th>Numero</th><th>Estado</th><th>Cliente</th>");
+				response.getWriter().print("<tr><td>" +cotizacionDto.getNumeroCotizacion() + "</td><td>"+ cotizacionDto.getEstado() + "</td><td>"+ cotizacionDto.getCliente().getRazonSocial()+"</td></tr>");
+				response.getWriter().print("</table>");
+				response.getWriter().print("<table>");
+				for(int j=0; j<cotizacionDto.getItems().size();j++){
+					ItemCotizacionDto item = cotizacionDto.getItems().get(j);
+					response.getWriter().print("<th>Rodamiento</th><th>Cantidad</th>");
+					response.getWriter().print("<tr><td>" +item.getRodamiento().getCodigo()+ "</td><td>"+ item.getCant() + "</td></tr>");
+				}
+				response.getWriter().print("</table>");
+			}
+			
+			
+		} catch (CommunicationException | NotBoundException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 	

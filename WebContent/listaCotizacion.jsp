@@ -9,7 +9,10 @@
 
 	<script type="text/javascript">
 		
+	function enviar(){
+		document.getElementById('metodo').value = "buscarCotizaciones";
 		
+	}
 		
 	</script>
 	<form action="CotizacionServlet" method="POST">
@@ -18,12 +21,7 @@
 		<h1>
 			<a href="index.html" class="menu">OV</a>
 		</h1>
-		<table>
-			<tr>
-				<td colspan="2" align="center">Cotizaciones</td>
-			</tr>
-			
-		</table>
+		<input type="submit" value="Aceptar" onClick="enviar();">
 	</form>
 </body>
 </html>

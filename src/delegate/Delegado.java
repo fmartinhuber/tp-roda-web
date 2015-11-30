@@ -114,4 +114,13 @@ public class Delegado {
 		return null;
 	}
 	
+	public List <CotizacionDto> obtenerCotizaciones(){
+		try{
+			return manejoDeDatosOV.obtenerCotizaciones();
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

@@ -86,7 +86,7 @@ public class CotizacionServlet extends HttpServlet {
 			List <ItemDto> listaItems = new ArrayList<ItemDto>();
 	
 			JSONArray jObj = new JSONArray(request.getParameter("listaRodamiento")); // this parses the json
-			
+			System.out.println("listaRodamiento:" +request.getParameter("listaRodamiento"));
 			
 			for (int i = 0; i < jObj.length(); i++) {
 				JSONObject objeto = jObj.getJSONObject(i);
@@ -111,12 +111,12 @@ public class CotizacionServlet extends HttpServlet {
 			try {
 				int nroCotizacion = Delegado.getInstancia().crearCotizacion(listaItems, cliente);
 				request.setAttribute("nroCotizacion", nroCotizacion);
+				response.getWriter().print("<p> Se creo la Cotizacion numero :  <b><u>" + nroCotizacion + "</u></b></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			}
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cotizacion.jsp");
-			dispatcher.forward(request,response);
+			
 		
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -125,11 +125,8 @@ public class CotizacionServlet extends HttpServlet {
 	}
 	
 	protected void buscarCotizaciones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		//Buscar cotizaciones aprobadas.
-//		ClienteNegocio clienteNegocio = new ClienteNegocio();
-//		clienteNegocio.setCUIT(request.getParameter("cuit"));
-//		
-//		List <CotizacionNegocio> cotizaciones = AdministracionOV.getInstancia().obtenerCotizacionesDeCiente(clienteNegocio);
+		
+//		List <CotizacionDto> cotizaciones = Delegado.getInstancia().obtenerCotizaciones();
 //		
 //		String [] arrayCotizaciones = new String [cotizaciones.size()];
 //		
@@ -140,7 +137,7 @@ public class CotizacionServlet extends HttpServlet {
 //		
 //		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aprobarCotizacion.jsp");
 //		dispatcher.forward(request,response);
-//		
+		
 		
 	
 	}
@@ -150,21 +147,18 @@ public class CotizacionServlet extends HttpServlet {
 		ClienteDto clienteNegocio = new ClienteDto();
 		clienteNegocio.setCUIT(request.getParameter("cuit"));
 		
-		CotizacionDto cotizacion = new CotizacionDto();
 		
 		//cotizacion.setIdCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
 		//cotizacion.setNumeroCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
 		System.out.println("cotizacionSeleccionada: "+request.getParameter("cotizacionSeleccionada"));
 		try {
-			Delegado.getInstancia().aprobarCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+			float valor = Delegado.getInstancia().aprobarCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+			response.getWriter().print("<p> Se aprobo la cotizacion por un valor de:  <b>$" + valor + "</b></p>");
 		} catch (CommunicationException | NotBoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//AdministracionOV.getInstancia().aprobarYCotizarCotizacion(cotizacion);	
 	
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aprobarCotizacion.jsp");
-		dispatcher.forward(request,response);
 	}
 
 }

@@ -68,12 +68,17 @@ public class Delegado {
 		return 0;
 	}
 	
-	public void aprobarCotizacion(int miCotDto){
+//	public List <CotizacionDto> obtenerCotizaciones (){
+//		return manejoDeDatosOV;
+//	}
+	
+	public float aprobarCotizacion(int miCotDto){
 		try{
-			manejoDeDatosOV.aprobarYCotizarCotizacion(miCotDto);
+			return manejoDeDatosOV.aprobarYCotizarCotizacion(miCotDto);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
+		return 0;
 	}
 	
 	public void generarFactura(List <CotizacionDto> cotizaciones, ClienteDto cliente){

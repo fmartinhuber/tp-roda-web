@@ -60,12 +60,14 @@ public class SolicitudCompraServlet extends HttpServlet {
 		try {
 			List <CotizacionDto> listaCotizaciones = Delegado.getInstancia().obtenerCotizacionesAprobadas();
 			Delegado.getInstancia().crearSolicitudCompra(listaCotizaciones);
-
+			response.getWriter().print("<p> Se generaron las solicitudes de compra </p>");
 		}  catch (CommunicationException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

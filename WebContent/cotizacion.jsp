@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cotizacion</title>
 </head>
-<body>
+
 	<script type="text/javascript">
 
 var listItems = [];
@@ -27,11 +27,19 @@ function enviar(){
 	var a = JSON.stringify(listItems);
 	document.getElementById("listaRodamiento").value = a;
 	document.getElementById("metodo").value = "generarCotizacion";
-	alert("Se creo la cotizacion");
 }
 
+function cotizacionCreada (numero){
+	if(numero != null) {
+		alert("Se creo la cotizacion:" + numero);
+	}
+	
+	
+}
 
 </script>
+<body onload="cotizacionCreada(<%= request.getParameter("nroCotizacion") %>)">
+
 	<form action="CotizacionServlet" method="POST">
 		<input type="hidden" name="listaRodamiento" id="listaRodamiento" value="">
 		<input type="hidden" name="metodo" id="metodo" value="">

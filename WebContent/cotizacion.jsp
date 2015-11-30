@@ -38,7 +38,6 @@ function cotizacionCreada (numero){
 }
 
 </script>
-<body onload="cotizacionCreada(<%= request.getParameter("nroCotizacion") %>)">
 
 	<form action="CotizacionServlet" method="POST">
 		<input type="hidden" name="listaRodamiento" id="listaRodamiento" value="">

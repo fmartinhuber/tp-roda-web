@@ -11,11 +11,11 @@
 		<table>
 			<tr>
 				<td>Usuario:</td>
-				<td><input type="TEXT" name="razonSocial" value="Agro Negocios Lujar"></td>
+				<td><input type="TEXT" name="razonSocial" value="Mecanica Industrial SRL"></td>
 			</tr>
 			<tr>
 				<td>Contraseña:</td>
-				<td><input type="password" name="password" value="Agro Negocios Lujar"></td>
+				<td><input type="password" name="password" value="Mecanica Industrial SRL"></td>
 			</tr>
 			<tr>
 				<td align="center"><input type="submit" value="Aceptar" ></td>

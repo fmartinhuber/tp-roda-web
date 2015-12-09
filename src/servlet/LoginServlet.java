@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			String razonSocial = request.getParameter("razonSocial");
 			String password = request.getParameter("password");
 			
-			ClienteDto cliente = Delegado.getInstancia().obtenerUsuario(razonSocial, password);
+			ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado(razonSocial, password);
 			
 			if(cliente == null){
 				response.getWriter().print("Usuario o Contraseña erronea");

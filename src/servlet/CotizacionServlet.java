@@ -113,6 +113,7 @@ public class CotizacionServlet extends HttpServlet {
 				int nroCotizacion = Delegado.getInstancia().crearCotizacion(listaItems, cliente);
 				request.setAttribute("nroCotizacion", nroCotizacion);
 				response.getWriter().print("<p> Se creo la Cotizacion numero :  <b><u>" + nroCotizacion + "</u></b></p>");
+				response.getWriter().print("<p> <a href=\"/index.html\">Regresar Menu</a></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			}

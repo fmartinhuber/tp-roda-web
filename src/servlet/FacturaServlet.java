@@ -57,12 +57,6 @@ public class FacturaServlet extends HttpServlet {
 	
 	private void crearFactura(HttpServletRequest request, HttpServletResponse response){
 		
-		
-		ClienteDto cliente = new ClienteDto();
-		cliente.setCUIT(request.getParameter("cuit"));
-		cliente.setRazonSocial(request.getParameter("razonSocial"));
-		
-		
 		List <CotizacionDto> listaCotizaciones = new ArrayList<CotizacionDto>();
 		
 		JSONArray jObj;
@@ -79,9 +73,9 @@ public class FacturaServlet extends HttpServlet {
 			}
 			
 			try {
+				ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
 				Delegado.getInstancia().generarFactura(listaCotizaciones, cliente);
-			} catch (CommunicationException | MalformedURLException
-					| NotBoundException e) {
+			} catch (CommunicationException | MalformedURLException | NotBoundException e) {
 				e.printStackTrace();
 			}
 			

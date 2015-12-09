@@ -79,9 +79,7 @@ public class CotizacionServlet extends HttpServlet {
 	protected void generarCotizaciones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		try {
-			ClienteDto cliente = new ClienteDto();
-			cliente.setCUIT(request.getParameter("cuit"));
-			cliente.setRazonSocial(request.getParameter("razonSocial"));
+			
 			
 			List <ItemDto> listaItems = new ArrayList<ItemDto>();
 	
@@ -109,6 +107,9 @@ public class CotizacionServlet extends HttpServlet {
 			}
 			
 			try {
+				
+				ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
+				
 				int nroCotizacion = Delegado.getInstancia().crearCotizacion(listaItems, cliente);
 				request.setAttribute("nroCotizacion", nroCotizacion);
 				response.getWriter().print("<p> Se creo la Cotizacion numero :  <b><u>" + nroCotizacion + "</u></b></p>");
@@ -163,8 +164,8 @@ public class CotizacionServlet extends HttpServlet {
 		//cotizacion.setNumeroCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
 		System.out.println("cotizacionSeleccionada: "+request.getParameter("cotizacionSeleccionada"));
 		try {
-			float valor = Delegado.getInstancia().aprobarCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
-			response.getWriter().print("<p> Se aprobo la cotizacion por un valor de:  <b>$" + valor + "</b></p>");
+			Delegado.getInstancia().aprobarCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+			//----response.getWriter().print("<p> Se aprobo la cotizacion por un valor de:  <b>$" + valor + "</b></p>");
 		} catch (CommunicationException | NotBoundException e) {
 			e.printStackTrace();
 		}

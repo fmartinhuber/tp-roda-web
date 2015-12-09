@@ -46,14 +46,14 @@ function cotizacionCreada (numero){
 			<a href="index.html" class="menu">OV</a>
 		</h1>
 		<table>
-			<tr>
+			<!--  <tr>
 				<td>Razon Social:</td>
 				<td><input type="TEXT" name="razonSocial" value="Agro Negocios Lujar"></td>
 			</tr>
 			<tr>
 				<td>CUIT:</td>
 				<td><input type="TEXT" name="cuit" value="30-22222222-3"></td>
-			</tr>
+			</tr>-->
 			<tr>
 				<td colspan="2" align="center">Rodamiento</td>
 			</tr>

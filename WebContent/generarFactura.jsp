@@ -31,14 +31,14 @@
 			<a href="index.html" class="menu">OV</a>
 		</h1>
 		<table>
-			<tr>
+			<!--  <tr>
 				<td>CUIT:</td>
 				<td><input type="TEXT" name="cuit" value="30-22222222-3">
 			</tr>
 			<tr>
 				<td>Razon Social:</td>
 				<td><input type="TEXT" name="razonSocial" value="Maquinaria Industrial SA">
-			</tr>
+			</tr> -->
 			<tr>
 				<td colspan="2">Factura</td>
 			</tr>

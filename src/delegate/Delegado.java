@@ -70,18 +70,23 @@ public class Delegado {
 		return 0;
 	}
 	
-//	public List <CotizacionDto> obtenerCotizaciones (){
-//		return manejoDeDatosOV;
-//	}
-	
-	public float aprobarCotizacion(int miCotDto){
+	public void aprobarCotizacion(int miCotDto){
 		try{
-			return manejoDeDatosOV.aprobarYCotizarCotizacion(miCotDto);
+			manejoDeDatosOV.aprobarCotizacion(miCotDto);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
-		return 0;
 	}
+	
+	//TODO hay algo para esto??
+//	public float obterValorCotizacion(int miCotDto){
+//		try{
+//			return manejoDeDatosOV.aprobarCotizacion(miCotDto);
+//		} catch(RemoteException e){
+//			e.printStackTrace();
+//		}
+//		return 0;
+//	}
 	
 	public void generarFactura(List <CotizacionDto> cotizaciones, ClienteDto cliente){
 		try{
@@ -134,5 +139,24 @@ public class Delegado {
 		}
 		return 0;
 	}
+	
+	public ClienteDto obtenerUsuario(String usuario, String contrasena){
+		try{
+			return manejoDeDatosOV.obtenerUsuario(usuario, contrasena);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ClienteDto obtenerUsuarioLogueado(){
+		try{
+			return manejoDeDatosOV.obtenerUsuarioLogueado();
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 }

@@ -20,6 +20,8 @@ import org.json.JSONObject;
 import delegate.Delegado;
 import dto.ClienteDto;
 import dto.CotizacionDto;
+import dto.FacturaDto;
+import dto.ItemFacturaDto;
 import dto.RodamientoDto;
 
 /**
@@ -71,15 +73,24 @@ public class FacturaServlet extends HttpServlet {
 				listaCotizaciones.add(cotizacionDto);
 				
 			}
-			
-			try {
-				ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
-				Delegado.getInstancia().generarFactura(listaCotizaciones, cliente);
-			} catch (CommunicationException | MalformedURLException | NotBoundException e) {
-				e.printStackTrace();
+
+			ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
+			FacturaDto factura = Delegado.getInstancia().generarFactura(listaCotizaciones, cliente);
+
+			response.getWriter().print("<p> Factura Nro: " + factura.getNumeroFactura() + "</p>");
+			response.getWriter().print("<p> Estado: " + factura.getEstado() + "</p>");
+			response.getWriter().print("<p> Cliente: " + factura.getCliente().getRazonSocial() + "</p>");
+			response.getWriter().print("<p> Fecha: " + factura.getFecha()+ "</p>");
+			for (int i = 0; i < factura.getItems().size(); i++) {
+				ItemFacturaDto item = factura.getItems().get(i);
+				response.getWriter().print("<p> Item </p>");
+				response.getWriter().print("<p> Rodamiento: " + item.getRodamiento().getCaracteristica() + "Codigo: " + item.getRodamiento().getCaracteristica() + "Cantidad: " + item.getCantidad() + "</p>");
 			}
-			
+			response.getWriter().print("<p> Total: " + factura.getTotal()+ "</p>");
+			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (CommunicationException | NotBoundException | IOException e) {
 			e.printStackTrace();
 		}
 		

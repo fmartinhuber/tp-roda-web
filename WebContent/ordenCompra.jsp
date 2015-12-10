@@ -30,7 +30,7 @@
 		<input type="hidden" name="listaOrdenCompra" id="listaOrdenCompra" value="">
 		<input type="hidden" name="metodo" id="metodo" value="">
 		<h1>
-			<a href="index.html" class="menu">OV</a>
+			<a href="indexCC.html" class="menu">CC</a>
 		</h1>
 		<table>
 			<tr>

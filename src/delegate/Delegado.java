@@ -11,6 +11,7 @@ import javax.naming.CommunicationException;
 import utils.ItemDto;
 import dto.ClienteDto;
 import dto.CotizacionDto;
+import dto.FacturaDto;
 import dto.OrdenCompraDto;
 import dto.ProveedorDto;
 import dto.RodamientoDto;
@@ -61,13 +62,13 @@ public class Delegado {
 	//Aca van los metodos
 	
 
-	public int crearCotizacion(List <ItemDto> listaItems,ClienteDto cliente){
+	public CotizacionDto crearCotizacion(List <ItemDto> listaItems,ClienteDto cliente){
 		try{
 			return manejoDeDatosOV.crearCotizacion(listaItems, cliente);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 	
 	public void aprobarCotizacion(int miCotDto){
@@ -88,29 +89,31 @@ public class Delegado {
 //		return 0;
 //	}
 	
-	public void generarFactura(List <CotizacionDto> cotizaciones, ClienteDto cliente){
+	public FacturaDto generarFactura(List <CotizacionDto> cotizaciones, ClienteDto cliente){
 		try{
-			manejoDeDatosOV.generarFactura(cotizaciones, cliente);
+			return manejoDeDatosOV.generarFactura(cotizaciones, cliente);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
-	public void crearSolicitudCompra(List <CotizacionDto> cotizacionesAprobadas){
+	public SolicitudCompraDto crearSolicitudCompra(List <CotizacionDto> cotizacionesAprobadas){
 		try{
-			manejoDeDatosOV.crearSolicitudCompra(cotizacionesAprobadas);
+			return manejoDeDatosOV.crearSolicitudCompra(cotizacionesAprobadas);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
-	public int crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes, String formaPago){
+	public OrdenCompraDto crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes, String formaPago){
 		try{
 			return manejoDeDatosCC.crearOrdenCompra(solicitudesPendientes, formaPago);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 	
 	public List <CotizacionDto> obtenerCotizacionesAprobadas(){

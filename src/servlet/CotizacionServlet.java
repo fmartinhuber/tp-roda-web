@@ -110,10 +110,21 @@ public class CotizacionServlet extends HttpServlet {
 				
 				ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
 				
-				int nroCotizacion = Delegado.getInstancia().crearCotizacion(listaItems, cliente);
-				request.setAttribute("nroCotizacion", nroCotizacion);
-				response.getWriter().print("<p> Se creo la Cotizacion numero :  <b><u>" + nroCotizacion + "</u></b></p>");
-				response.getWriter().print("<p> <a href=\"/index.html\">Regresar Menu</a></p>");
+				CotizacionDto cotizacionDto = Delegado.getInstancia().crearCotizacion(listaItems, cliente);
+				response.getWriter().print("<p> Se creo la Cotizacion numero :  <b><u>" + cotizacionDto.getNumeroCotizacion() + "</u></b></p>");
+				response.getWriter().print("<p> Estado :  " + cotizacionDto.getEstado() + "</p>");
+				response.getWriter().print("<p> Cliente :  " + cotizacionDto.getCliente().getRazonSocial() + "</p>");
+				response.getWriter().print("<p> Fecha Creacion :  " + cotizacionDto.getFechaCreacion() + "</p>");
+				float total = 0;
+				for (int i = 0; i < cotizacionDto.getItems().size(); i++) {
+					ItemCotizacionDto item = cotizacionDto.getItems().get(i);
+					response.getWriter().print("<p> RODAMIENTO </p> ");
+					response.getWriter().print("<p> Carateristica :  " + item.getRodamiento().getCaracteristica() + " Codigo: " + item.getRodamiento().getCodigo() +  "</p>");
+					response.getWriter().print("<p> Valor :  " + item.getRodamiento().getMonto() + " Cantidad: " + item.getCant() +  "</p>");
+					total+=item.getRodamiento().getMonto()*item.getCant();
+				}
+				response.getWriter().print("<p> TOTAL: " + total +  "</p>");
+				response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			}
@@ -144,8 +155,7 @@ public class CotizacionServlet extends HttpServlet {
 				}
 				response.getWriter().print("</table>");
 			}
-			
-			
+			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 		} catch (CommunicationException | NotBoundException e) {
 			e.printStackTrace();
 		}

@@ -21,6 +21,7 @@ import utils.ItemDto;
 import delegate.Delegado;
 import dto.CotizacionDto;
 import dto.RodamientoDto;
+import dto.SolicitudCompraDto;
 
 
 /**
@@ -59,7 +60,7 @@ public class SolicitudCompraServlet extends HttpServlet {
 		 
 		try {
 			List <CotizacionDto> listaCotizaciones = Delegado.getInstancia().obtenerCotizacionesAprobadas();
-			Delegado.getInstancia().crearSolicitudCompra(listaCotizaciones);
+			SolicitudCompraDto solicitud = Delegado.getInstancia().crearSolicitudCompra(listaCotizaciones);
 			response.getWriter().print("<p> Se generaron las solicitudes de compra </p>");
 		}  catch (CommunicationException e) {
 			e.printStackTrace();

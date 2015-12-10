@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import delegate.Delegado;
 import dto.CotizacionDto;
+import dto.OrdenCompraDto;
 import dto.SolicitudCompraDto;
 
 /**
@@ -71,8 +72,21 @@ public class OrdenCompraServlet extends HttpServlet {
 				solicitudesPendientes.add(solicitudCompra);
 			}
 			String forma = request.getParameter("formaPago");
-			int ordenCompra = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes,forma);
-			response.getWriter().print("<p> Se generaron las solicitudes de compra: " +ordenCompra+ "</p>");
+			OrdenCompraDto orden = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes,forma);
+			response.getWriter().print("<p> Orden de Compra: " + orden.getNumeroOrdenCompra() + "</p>");
+			response.getWriter().print("<p> Estado: " + orden.getEstado() + "</p>");
+			response.getWriter().print("<p> Proveedor: " + orden.getProveedor() + "</p>");
+			response.getWriter().print("<p> SOLICITUDES </p>");
+			for (int i = 0; i < orden.getSolicitudesCompra().size(); i++) {
+				SolicitudCompraDto solicitud = orden.getSolicitudesCompra().get(i);
+				response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
+				response.getWriter().print("<p> Estado: " + orden.getEstado() + "</p>");
+			}
+			for (int i = 0; i < orden.getListaCotizaciones().size(); i++) {
+				CotizacionDto cotizacion = orden.getListaCotizaciones().get(i);
+				response.getWriter().print("<p> Cotizacion: " + cotizacion.getNumeroCotizacion() + "</p>");
+			}
+			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}  catch (CommunicationException e) {

@@ -79,15 +79,15 @@ public class Delegado {
 		}
 	}
 	
-	//TODO hay algo para esto??
-//	public float obterValorCotizacion(int miCotDto){
-//		try{
-//			return manejoDeDatosOV.aprobarCotizacion(miCotDto);
-//		} catch(RemoteException e){
-//			e.printStackTrace();
-//		}
-//		return 0;
-//	}
+	
+	public float obterValorCotizacion(int miCotDto){
+		try{
+			return manejoDeDatosOV.cotizarCotizacion(miCotDto);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	public FacturaDto generarFactura(List <CotizacionDto> cotizaciones, ClienteDto cliente){
 		try{
@@ -98,6 +98,12 @@ public class Delegado {
 		return null;
 	}
 	
+	/**
+	 * Pasa a ser un proceso Batch.
+	 * @param cotizacionesAprobadas
+	 * @return
+	 */
+	@Deprecated
 	public SolicitudCompraDto crearSolicitudCompra(List <CotizacionDto> cotizacionesAprobadas){
 		try{
 			return manejoDeDatosOV.crearSolicitudCompra(cotizacionesAprobadas);

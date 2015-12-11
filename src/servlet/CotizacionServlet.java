@@ -123,7 +123,7 @@ public class CotizacionServlet extends HttpServlet {
 					response.getWriter().print("<p> Valor :  " + item.getRodamiento().getMonto() + " Cantidad: " + item.getCant() +  "</p>");
 					total+=item.getRodamiento().getMonto()*item.getCant();
 				}
-				response.getWriter().print("<p> TOTAL: " + total +  "</p>");
+				//response.getWriter().print("<p> TOTAL: " + total +  "</p>");
 				response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
@@ -159,9 +159,25 @@ public class CotizacionServlet extends HttpServlet {
 		} catch (CommunicationException | NotBoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	protected void obtenerCotizacionesParaAprobar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Buscar cotizaciones aprobadas.
+		ClienteDto clienteNegocio = new ClienteDto();
+		clienteNegocio.setCUIT(request.getParameter("cuit"));
 		
 		
-		
+		//cotizacion.setIdCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+		//cotizacion.setNumeroCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+		System.out.println("cotizacionSeleccionada: "+request.getParameter("cotizacionSeleccionada"));
+		try {
+			Delegado.getInstancia().aprobarCotizacion(Integer.valueOf(request.getParameter("cotizacionSeleccionada")));
+			//----response.getWriter().print("<p> Se aprobo la cotizacion por un valor de:  <b>$" + valor + "</b></p>");
+		} catch (CommunicationException | NotBoundException e) {
+			e.printStackTrace();
+		}
+		//AdministracionOV.getInstancia().aprobarYCotizarCotizacion(cotizacion);	
 	
 	}
 	

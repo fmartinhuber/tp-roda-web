@@ -9,8 +9,7 @@
 
 	<script type="text/javascript">
 		function enviar() {
-			alert("Cotizacion aprobada");
-			document.getElementById("metodo").value = "aprobarCotizacion";
+			document.getElementById("metodo").value = "buscarCotizacion";
 		}
 		
 		

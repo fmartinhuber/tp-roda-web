@@ -79,6 +79,24 @@ public class Delegado {
 		}
 	}
 	
+	public CotizacionDto obtenerCotizacionPorId(int miCotDto){
+		try{
+			return manejoDeDatosOV.obtenerCotizaciones(miCotDto);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public float cotizarCotizacion(int miCotDto){
+		try{
+			return manejoDeDatosOV.cotizarCotizacion(miCotDto);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	
 	public float obterValorCotizacion(int miCotDto){
 		try{

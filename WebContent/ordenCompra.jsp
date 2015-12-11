@@ -16,7 +16,6 @@
 		listaOrdenCompra.push({
 			"codigo": document.getElementById('codigo').value
 		});
-		alert("Se agrego una solicitud");
 	}
 	
 	function enviar(){

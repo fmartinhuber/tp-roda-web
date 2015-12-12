@@ -185,5 +185,23 @@ public class Delegado {
 		return null;
 	}
 	
+	public List <OrdenCompraDto> obtenerOrdenesCompra(){
+		try{
+			return manejoDeDatosCC.obtenerOrdenesCompra();
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void aprobarOrdenesCompra(int nroOrdenCompra){
+		try{
+			manejoDeDatosCC.aprobarOrdenCompra(nroOrdenCompra);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 }

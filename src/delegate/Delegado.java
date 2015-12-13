@@ -43,8 +43,10 @@ public class Delegado {
 	private void conexionRemota() throws CommunicationException, MalformedURLException, NotBoundException
 	{
 		try {
-			manejoDeDatosOV = (IAdministracionOV) Naming.lookup("//192.168.1.118:1099/SistemaRodamientoOV");
-			manejoDeDatosCC = (IAdministracionCC) Naming.lookup("//192.168.1.118:1099/SistemaRodamientoCC");
+//			manejoDeDatosOV = (IAdministracionOV) Naming.lookup("//192.168.1.118:1099/SistemaRodamientoOV");
+//			manejoDeDatosCC = (IAdministracionCC) Naming.lookup("//192.168.1.118:1099/SistemaRodamientoCC");
+			manejoDeDatosOV = (IAdministracionOV) Naming.lookup("//localhost/SistemaRodamientoOV");
+			manejoDeDatosCC = (IAdministracionCC) Naming.lookup("//localhost/SistemaRodamientoCC");
 			System.out.println("Se conecto correctamente con el servidor");
 			System.out.println("========================================");
 		} catch (RemoteException e) {

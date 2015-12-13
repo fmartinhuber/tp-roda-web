@@ -158,9 +158,11 @@ public class Delegado {
 		return null;
 	}
 	
-	public int crearRemito(List <OrdenCompraDto> listaOrdenes, ProveedorDto proveedor){
+	//public int crearRemito(List <OrdenCompraDto> listaOrdenes, ProveedorDto proveedor){
+	public int crearRemito(List <OrdenCompraDto> listaOrdenes){
 		try{
-			return manejoDeDatosCC.crearRemito(listaOrdenes, proveedor);
+			//return manejoDeDatosCC.crearRemito(listaOrdenes, proveedor);
+			return manejoDeDatosCC.crearRemito(listaOrdenes);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}

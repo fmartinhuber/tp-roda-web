@@ -82,7 +82,8 @@ public class RemitoServlet extends HttpServlet {
 			}
 			
 			try {
-				int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
+				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
+				int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
 				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();

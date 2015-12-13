@@ -17,13 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.ItemDto;
 import delegate.Delegado;
-import dto.ClienteDto;
-import dto.OrdenCompraDto;
-import dto.ProveedorDto;
-import dto.RemitoDto;
-import dto.RodamientoDto;
+import dto.*;
 
 /**
  * Servlet implementation class remitoServlet
@@ -83,8 +78,10 @@ public class RemitoServlet extends HttpServlet {
 			
 			try {
 				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
-				int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
-				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
+				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
+				RemitoDto remitoDto = Delegado.getInstancia().crearRemito(listaItems);
+				//response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
+				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + remitoDto.getNumeroRemito() + "</b></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			} catch (MalformedURLException e) {

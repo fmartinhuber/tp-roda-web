@@ -9,12 +9,7 @@ import java.util.List;
 import javax.naming.CommunicationException;
 
 import utils.ItemDto;
-import dto.ClienteDto;
-import dto.CotizacionDto;
-import dto.FacturaDto;
-import dto.OrdenCompraDto;
-import dto.ProveedorDto;
-import dto.RodamientoDto;
+import dto.*;
 import dto.SolicitudCompraDto;
 import interfaces.IAdministracionCC;
 import interfaces.IAdministracionOV;
@@ -159,14 +154,14 @@ public class Delegado {
 	}
 	
 	//public int crearRemito(List <OrdenCompraDto> listaOrdenes, ProveedorDto proveedor){
-	public int crearRemito(List <OrdenCompraDto> listaOrdenes){
+	public RemitoDto crearRemito(List <OrdenCompraDto> listaOrdenes){
 		try{
 			//return manejoDeDatosCC.crearRemito(listaOrdenes, proveedor);
 			return manejoDeDatosCC.crearRemito(listaOrdenes);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 	
 	public ClienteDto obtenerUsuarioLogueado(String usuario, String contrasena){

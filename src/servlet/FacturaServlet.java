@@ -36,7 +36,6 @@ public class FacturaServlet extends HttpServlet {
      */
     public FacturaServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

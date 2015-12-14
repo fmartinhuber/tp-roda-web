@@ -119,11 +119,11 @@ public class OrdenCompraServlet extends HttpServlet {
 				response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
 				response.getWriter().print("<p> Proveedor: " + ordenCompraDto.getProveedor() + "</p>");
 				response.getWriter().print("<p> SOLICITUDES </p>");
-				for (int i = 0; i < ordenCompraDto.getSolicitudesCompra().size(); i++) {
-					SolicitudCompraDto solicitud = ordenCompraDto.getSolicitudesCompra().get(i);
-					response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
-					response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
-				}
+//				for (int i = 0; i < ordenCompraDto.getSolicitudesCompra().size(); i++) {
+//					SolicitudCompraDto solicitud = ordenCompraDto.getSolicitudesCompra().get(i);
+//					response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
+//					response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
+//				}
 				for (int i = 0; i < ordenCompraDto.getListaCotizaciones().size(); i++) {
 					CotizacionDto cotizacion = ordenCompraDto.getListaCotizaciones().get(i);
 					response.getWriter().print("<p> Cotizacion: " + cotizacion.getNumeroCotizacion() + "</p>");

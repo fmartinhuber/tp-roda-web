@@ -80,8 +80,10 @@ public class RemitoServlet extends HttpServlet {
 				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
 				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
 				RemitoDto remitoDto = Delegado.getInstancia().crearRemito(listaItems);
+				Delegado.getInstancia().entregarPedidos(remitoDto);
 				//response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
-				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + remitoDto.getNumeroRemito() + "</b></p>");				
+				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + 1 + "</b></p>");		
+				response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			} catch (MalformedURLException e) {

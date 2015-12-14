@@ -200,6 +200,12 @@ public class Delegado {
 		}
 	}
 	
-	
+	public void entregarPedidos(RemitoDto remito){
+		try{
+			manejoDeDatosOV.entregaPedidos(remito);
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+	}
 	
 }

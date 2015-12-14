@@ -21,6 +21,7 @@ import delegate.Delegado;
 import dto.CotizacionDto;
 import dto.ItemOrdenCompraDto;
 import dto.OrdenCompraDto;
+import dto.RodamientoDto;
 import dto.SolicitudCompraDto;
 
 /**
@@ -117,16 +118,17 @@ public class OrdenCompraServlet extends HttpServlet {
 			for (OrdenCompraDto ordenCompraDto : ordenes) {
 				response.getWriter().print("<p> Orden de Compra: " + ordenCompraDto.getNumeroOrdenCompra() + "</p>");
 				response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
-				response.getWriter().print("<p> Proveedor: " + ordenCompraDto.getProveedor() + "</p>");
-				response.getWriter().print("<p> SOLICITUDES </p>");
+				response.getWriter().print("<p> Proveedor: " + ordenCompraDto.getProveedor().getNombre() + "</p>");
+				response.getWriter().print("<p> Rodamientos </p>");
+				
 //				for (int i = 0; i < ordenCompraDto.getSolicitudesCompra().size(); i++) {
 //					SolicitudCompraDto solicitud = ordenCompraDto.getSolicitudesCompra().get(i);
 //					response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
 //					response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
 //				}
-				for (int i = 0; i < ordenCompraDto.getListaCotizaciones().size(); i++) {
-					CotizacionDto cotizacion = ordenCompraDto.getListaCotizaciones().get(i);
-					response.getWriter().print("<p> Cotizacion: " + cotizacion.getNumeroCotizacion() + "</p>");
+				for (int i = 0; i < ordenCompraDto.getItems().size(); i++) {
+					RodamientoDto rodamiento = ordenCompraDto.getItems().get(i).getRodamiento();
+					response.getWriter().print("<p> Rodamiento: " + rodamiento.getNumeroRodamiento()+ "</p>");
 				}
 			}
 			

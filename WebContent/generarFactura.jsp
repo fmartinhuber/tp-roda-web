@@ -49,14 +49,14 @@
 			<tr>
 				<td colspan="2" align="right"><input type="button" value="Agregar" onClick="agregar();"></td>
 			</tr>
-			<tr>
+			<!--  <tr>
 				<td>Sub total:</td>
 				<td><input type="TEXT" id="subTotal" value="1"></td>
 			</tr>
 			<tr>
 				<td>Total:</td>
 				<td><input type="TEXT" id="total" value="1"></td>
-			</tr>
+			</tr>-->
 			<tr>
 				<td align="center"><input type="submit" value="Aceptar" onClick="enviar();"></td>
 				<td align="center"><input type="reset" value="Cancelar"></td>

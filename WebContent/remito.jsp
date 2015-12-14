@@ -39,8 +39,8 @@
 			<tr>
 				<td>Nro orden compra:</td>
 				<td><input type="TEXT" name="codigo" id="codigo" value="1"></td>
-				<td>CUIT Proveedor:</td>
-				<td><input type="TEXT" id="proveedor" name="proveedor" value="1"></td>
+				<!--  <td>CUIT Proveedor:</td>
+				<td><input type="TEXT" id="proveedor" name="proveedor" value="1"></td>-->
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><input type="button" value="Agregar" onClick="agregar();"></td>

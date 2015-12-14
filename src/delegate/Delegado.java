@@ -158,7 +158,7 @@ public class Delegado {
 	public RemitoDto crearRemito(List <OrdenCompraDto> listaOrdenes){
 		try{
 			//return manejoDeDatosCC.crearRemito(listaOrdenes, proveedor);
-			return manejoDeDatosCC.crearRemito(listaOrdenes);
+			return manejoDeDatosOV.crearRemito(listaOrdenes);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
@@ -199,6 +199,7 @@ public class Delegado {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public void entregarPedidos(RemitoDto remito){
 		try{

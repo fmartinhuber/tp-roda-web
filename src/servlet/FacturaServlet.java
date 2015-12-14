@@ -78,7 +78,7 @@ public class FacturaServlet extends HttpServlet {
 
 			response.getWriter().print("<p> Factura Nro: " + factura.getNumeroFactura() + "</p>");
 			response.getWriter().print("<p> Estado: " + factura.getEstado() + "</p>");
-			response.getWriter().print("<p> Cliente: " + factura.getCliente().getRazonSocial() + "</p>");
+			//response.getWriter().print("<p> Cliente: " + factura.getCliente() + "</p>");
 			response.getWriter().print("<p> Fecha: " + factura.getFecha()+ "</p>");
 			for (int i = 0; i < factura.getItems().size(); i++) {
 				ItemFacturaDto item = factura.getItems().get(i);

@@ -113,25 +113,28 @@ public class OrdenCompraServlet extends HttpServlet {
 				solicitudesPendientes.add(solicitudCompra);
 			}
 			String forma = request.getParameter("formaPago");
-			OrdenCompraDto orden = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes,forma);
-			response.getWriter().print("<p> Orden de Compra: " + orden.getNumeroOrdenCompra() + "</p>");
-			response.getWriter().print("<p> Estado: " + orden.getEstado() + "</p>");
-			response.getWriter().print("<p> Proveedor: " + orden.getProveedor() + "</p>");
-			response.getWriter().print("<p> SOLICITUDES </p>");
-			for (int i = 0; i < orden.getSolicitudesCompra().size(); i++) {
-				SolicitudCompraDto solicitud = orden.getSolicitudesCompra().get(i);
-				response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
-				response.getWriter().print("<p> Estado: " + orden.getEstado() + "</p>");
+			List <OrdenCompraDto> ordenes = Delegado.getInstancia().crearOrdenCompra(solicitudesPendientes,forma);
+			for (OrdenCompraDto ordenCompraDto : ordenes) {
+				response.getWriter().print("<p> Orden de Compra: " + ordenCompraDto.getNumeroOrdenCompra() + "</p>");
+				response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
+				response.getWriter().print("<p> Proveedor: " + ordenCompraDto.getProveedor() + "</p>");
+				response.getWriter().print("<p> SOLICITUDES </p>");
+				for (int i = 0; i < ordenCompraDto.getSolicitudesCompra().size(); i++) {
+					SolicitudCompraDto solicitud = ordenCompraDto.getSolicitudesCompra().get(i);
+					response.getWriter().print("<p> Solicitud: " + solicitud.getNumeroSolicitudCompra() + "</p>");
+					response.getWriter().print("<p> Estado: " + ordenCompraDto.getEstado() + "</p>");
+				}
+				for (int i = 0; i < ordenCompraDto.getListaCotizaciones().size(); i++) {
+					CotizacionDto cotizacion = ordenCompraDto.getListaCotizaciones().get(i);
+					response.getWriter().print("<p> Cotizacion: " + cotizacion.getNumeroCotizacion() + "</p>");
+				}
 			}
-			for (int i = 0; i < orden.getListaCotizaciones().size(); i++) {
-				CotizacionDto cotizacion = orden.getListaCotizaciones().get(i);
-				response.getWriter().print("<p> Cotizacion: " + cotizacion.getNumeroCotizacion() + "</p>");
-			}
-			response.getWriter().print("<form action=\"OrdenCompraServlet\" method=\"POST\">");
-			response.getWriter().print("<input type=\"hidden\" name=\"metodo\" id=\"metodo\" value=\"aprobarOrdenCotizacion\">");
-			response.getWriter().print("<input type=\"hidden\" name=\"ordenSeleccionada\" value=\"" + orden.getNumeroOrdenCompra() + "\">");
-			response.getWriter().print("<p>Desea aprobar la cotizacion?</p><input type=\"submit\" value=\"Aceptar\" onClick=\"enviar();\">");
-			response.getWriter().print("</form>");
+			
+//			response.getWriter().print("<form action=\"OrdenCompraServlet\" method=\"POST\">");
+//			response.getWriter().print("<input type=\"hidden\" name=\"metodo\" id=\"metodo\" value=\"aprobarOrdenCotizacion\">");
+//			response.getWriter().print("<input type=\"hidden\" name=\"ordenSeleccionada\" value=\"" + orden.getNumeroOrdenCompra() + "\">");
+//			response.getWriter().print("<p>Desea aprobar la cotizacion?</p><input type=\"submit\" value=\"Aceptar\" onClick=\"enviar();\">");
+//			response.getWriter().print("</form>");
 			response.getWriter().print("<p> <a href=\"/tp-roda-web/indexCC.html\">Regresar Menu</a></p>");
 		} catch (JSONException e) {
 			e.printStackTrace();

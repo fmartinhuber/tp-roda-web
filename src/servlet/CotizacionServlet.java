@@ -129,6 +129,7 @@ public class CotizacionServlet extends HttpServlet {
 				}
 				response.getWriter().print("<p> TOTAL: " + total +  "</p>");
 				response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
+				
 			} catch (CommunicationException | NotBoundException e) {
 				e.printStackTrace();
 			}

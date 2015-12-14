@@ -10,7 +10,6 @@ import javax.naming.CommunicationException;
 
 import utils.ItemDto;
 import dto.*;
-import dto.SolicitudCompraDto;
 import interfaces.IAdministracionCC;
 import interfaces.IAdministracionOV;
 
@@ -128,7 +127,7 @@ public class Delegado {
 		return null;
 	}
 	
-	public OrdenCompraDto crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes, String formaPago){
+	public List <OrdenCompraDto> crearOrdenCompra(List <SolicitudCompraDto> solicitudesPendientes, String formaPago){
 		try{
 			return manejoDeDatosCC.crearOrdenCompra(solicitudesPendientes, formaPago);
 		} catch(RemoteException e){

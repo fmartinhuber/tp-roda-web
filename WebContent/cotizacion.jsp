@@ -12,6 +12,16 @@
 var listItems = [];
 
 
+function validar(){
+	var codigo = document.getElementById('codigo').value;
+	var regex = /[0-9]/;
+	if(!regex.test(codigo)){
+		alert("Debe ingresar codigo numerico");
+		document.getElementById('codigo').value = "";
+	}
+	
+}
+
 function agregar(){
 	listItems.push({
 		"codigo": document.getElementById('codigo').value,
@@ -59,7 +69,7 @@ function cotizacionCreada (numero){
 			</tr>
 			<tr>
 				<td>Codigo:</td>
-				<td><input type="TEXT" id="codigo" value="20210"></td>
+				<td><input type="TEXT" id="codigo" value="20210" onChange="validar()"></td>
 			</tr>
 			<tr>
 				<td>Cantidad:</td>

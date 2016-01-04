@@ -20,13 +20,13 @@ import dto.ClienteDto;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,25 +39,21 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			
-			String razonSocial = request.getParameter("razonSocial");
-			String password = request.getParameter("password");
-			
-			ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado(razonSocial, password);
-			
-			if(cliente == null){
-				response.getWriter().print("Usuario o Contraseña erronea");
-			}else{
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.html");
-		        requestDispatcher.forward(request, response);
-			}
-			
-		} catch (CommunicationException | NotBoundException e) {
-			e.printStackTrace();
+
+		String razonSocial = request.getParameter("razonSocial");
+		String password = request.getParameter("password");
+
+		ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado(razonSocial, password);
+
+		if(cliente == null){
+			response.getWriter().print("Usuario o Contraseña erronea");
+		}else{
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.html");
+			requestDispatcher.forward(request, response);
 		}
-		
-		
+
+
+
 	}
 
 }

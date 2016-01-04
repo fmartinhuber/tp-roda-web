@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List" %>
+<%@ page import="dto.RodamientoDto" %>
+<%@ page import="delegate.Delegado" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,12 +16,12 @@
 var listItems = [];
 
 
-function validar(){
-	var codigo = document.getElementById('codigo').value;
+function validar(campo){
+	var codigo = document.getElementById(campo).value;
 	var regex = /[0-9]/;
 	if(!regex.test(codigo)){
 		alert("Debe ingresar codigo numerico");
-		document.getElementById('codigo').value = "";
+		document.getElementById(campo).value = "";
 	}
 	
 }
@@ -69,11 +73,21 @@ function cotizacionCreada (numero){
 			</tr>
 			<tr>
 				<td>Codigo:</td>
-				<td><input type="TEXT" id="codigo" value="20210" onChange="validar()"></td>
+				<td width="200"><select name="listaCombo" id="listaCombo" >
+				<% List <RodamientoDto> listaRodamiento = Delegado.getInstancia().obtenerRodamientos();
+					for(int i = 0;i<listaRodamiento.size();i++){
+						RodamientoDto roda = listaRodamiento.get(i);
+				%>
+					<option value="<%= roda.getCodigo() %>"><%= roda.getCaracteristica() %></option>
+				<% 
+					}
+				%>
+				</select></td>
+				<!--  <td><input type="TEXT" id="codigo" value="20210" onChange="validar(codigo)"></td>-->
 			</tr>
 			<tr>
 				<td>Cantidad:</td>
-				<td><input type="TEXT" id="cantidad" value="1"></td>
+				<td><input type="TEXT" id="cantidad" value="1" onChange="validar(cantidad)"></td>
 			</tr>
 			<tr>
 				<td>caracteristica:</td>

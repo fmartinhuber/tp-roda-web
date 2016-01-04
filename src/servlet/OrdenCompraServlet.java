@@ -67,7 +67,7 @@ public class OrdenCompraServlet extends HttpServlet {
 			
 			response.getWriter().print("<p> Se aprobó la orden de compra </p>");
 			response.getWriter().print("<p> <a href=\"/tp-roda-web/indexCC.html\">Regresar Menu</a></p>");
-		} catch (NumberFormatException | CommunicationException  | NotBoundException | IOException e) {
+		} catch (NumberFormatException | IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -93,7 +93,7 @@ public class OrdenCompraServlet extends HttpServlet {
 				response.getWriter().print("<p> Total: " +ordenCompraDto.getTotal() +" </p>");
 			}
 			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
-		} catch (CommunicationException  | NotBoundException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -139,12 +139,6 @@ public class OrdenCompraServlet extends HttpServlet {
 //			response.getWriter().print("</form>");
 			response.getWriter().print("<p> <a href=\"/tp-roda-web/indexCC.html\">Regresar Menu</a></p>");
 		} catch (JSONException e) {
-			e.printStackTrace();
-		}  catch (CommunicationException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

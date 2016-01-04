@@ -26,13 +26,13 @@ import dto.*;
 @WebServlet("/RemitoServlet")
 public class RemitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RemitoServlet() {
-        super();
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public RemitoServlet() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,37 +62,30 @@ public class RemitoServlet extends HttpServlet {
 		try {
 			ProveedorDto proveedor = new ProveedorDto();
 			proveedor.setCUIT(request.getParameter("proveedor"));
-			
+
 			List <OrdenCompraDto> listaItems = new ArrayList<OrdenCompraDto>();
-	
+
 			JSONArray jObj = new JSONArray(request.getParameter("listaOrdenCompra")); // this parses the json
-			
+
 			for (int i = 0; i < jObj.length(); i++) {
 				JSONObject objeto = jObj.getJSONObject(i);
 				String codigo = objeto.getString("codigo");
-				
+
 				OrdenCompraDto orden = new OrdenCompraDto();
 				orden.setNumeroOrdenCompra(Integer.valueOf(codigo));
 				listaItems.add(orden);
 			}
-			
-			try {
-				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
-				//int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
-				RemitoDto remitoDto = Delegado.getInstancia().crearRemito(listaItems);
-				Delegado.getInstancia().entregarPedidos(remitoDto);
-				//response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
-				response.getWriter().print("<p> Se creo el Remito numero :  <b>" + 1 + "</b></p>");		
-				response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
-			} catch (CommunicationException | NotBoundException e) {
-				e.printStackTrace();
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		} catch (JSONException e) {
+
+
+			//int nroOrden = Delegado.getInstancia().crearRemito(listaItems, proveedor);
+			//int nroOrden = Delegado.getInstancia().crearRemito(listaItems);
+			RemitoDto remitoDto = Delegado.getInstancia().crearRemito(listaItems);
+			Delegado.getInstancia().entregarPedidos(remitoDto);
+			//response.getWriter().print("<p> Se creo el Remito numero :  <b>" + nroOrden + "</b></p>");
+			response.getWriter().print("<p> Se creo el Remito numero :  <b>" + 1 + "</b></p>");		
+			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
+
+		} catch (JSONException | IOException e) {
 			e.printStackTrace();
 		}
 	}

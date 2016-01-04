@@ -30,13 +30,13 @@ import dto.RodamientoDto;
 @WebServlet("/FacturaServlet")
 public class FacturaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FacturaServlet() {
-        super();
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public FacturaServlet() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,25 +52,25 @@ public class FacturaServlet extends HttpServlet {
 		System.out.println("metodo:" + request.getMethod());
 		if(request.getParameter("metodo").equals("crearFactura")){
 			crearFactura(request,response);
-	   }
+		}
 
 	}
-	
+
 	private void crearFactura(HttpServletRequest request, HttpServletResponse response){
-		
+
 		List <CotizacionDto> listaCotizaciones = new ArrayList<CotizacionDto>();
-		
+
 		JSONArray jObj;
 		try {
 			jObj = new JSONArray(request.getParameter("listaCotizacion"));
-			
+
 			for (int i = 0; i < jObj.length(); i++) {
 				JSONObject objeto = jObj.getJSONObject(i);
 				String codigo = objeto.getString("codigo");
 				CotizacionDto cotizacionDto = new CotizacionDto();
 				cotizacionDto.setNumeroCotizacion(Integer.valueOf(codigo));
 				listaCotizaciones.add(cotizacionDto);
-				
+
 			}
 
 			ClienteDto cliente = Delegado.getInstancia().obtenerUsuarioLogueado();
@@ -87,13 +87,10 @@ public class FacturaServlet extends HttpServlet {
 			}
 			response.getWriter().print("<p> Total: " + factura.getTotal()+ "</p>");
 			response.getWriter().print("<p> <a href=\"/tp-roda-web/index.html\">Regresar Menu</a></p>");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (CommunicationException | NotBoundException | IOException e) {
+		} catch (JSONException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 }
